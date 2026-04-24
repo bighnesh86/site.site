@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homisee Studio | Bespoke Murals, Sculptures & Miniatures</title>
+    
+    <!-- Tailwind CSS & Premium Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================================================================
+           1. COLOR PALETTE
+           ================================================================
+        */
+        :root {
+            --beige-light: #F5F2ED; 
+            --beige-dark: #E5DED4;  
+            --brown-soft: #705E51;  
+            --brown-deep: #4A3F35;  
+            --text-main: #2D2621;   
+            --fiverr-green: #1dbf73;
+            --whatsapp-green: #25D366;
+        }
+
+        body { background-color: var(--beige-light); color: var(--text-main); font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .nav-link::after { content: ''; display: block; width: 0; height: 1px; background: var(--brown-soft); transition: width .3s; }
+        .nav-link:hover::after { width: 100%; }
+
+        .portfolio-card { overflow: hidden; position: relative; border-radius: 2px; }
+        .portfolio-card img { transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .portfolio-card:hover img { transform: scale(1.08); }
+
+        .btn-primary { background-color: var(--brown-deep); color: white; transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--brown-soft); transform: translateY(-2px); }
+
+        .btn-fiverr { border: 1px solid var(--fiverr-green); color: var(--fiverr-green); transition: all 0.3s ease; }
+        .btn-fiverr:hover { background-color: var(--fiverr-green); color: white; transform: translateY(-2px); }
+
+        .custom-cursor { width: 20px; height: 20px; border: 1px solid var(--brown-soft); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; }
+        .fiverr-card { border: 1px solid rgba(29, 191, 115, 0.2); background: white; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <!-- 
+        ================================================================
+        NAVIGATION
+        ================================================================
+    -->
+    <nav class="fixed w-full z-50 px-6 py-6 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-serif font-semibold tracking-widest text-brown-deep italic">
+                HOMISEE STUDIO
+            </div>
+            
+            <div class="hidden md:flex space-x-12 text-xs uppercase tracking-widest font-bold text-brown-deep">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">Studio</a>
+                <a href="#portfolio" class="nav-link">Gallery</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Commission</a>
+            </div>
+
+            <button class="md:hidden text-brown-deep" id="menuBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-serif transform translate-x-full transition-transform duration-500">
+        <button id="closeMenu" class="absolute top-8 right-8 text-brown-deep"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l18 18" /></svg></button>
+        <a href="#home" onclick="toggleMenu()">Home</a>
+        <a href="#about" onclick="toggleMenu()">Studio</a>
+        <a href="#portfolio" onclick="toggleMenu()">Gallery</a>
+        <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+        <a href="#contact" onclick="toggleMenu()">Commission</a>
+    </div>
+
+    <!-- 
+        ================================================================
+        HERO SECTION
+        ================================================================
+    -->
+    <!-- 
+       TO REPLACE HERO IMAGE: 
+       Change 'https://images.unsplash.com/...' to your local path e.g. 'images/hero-bg.jpg'
+    -->
+    <section id="home" class="h-screen flex items-center justify-center relative px-6 bg-cover bg-center" 
+             style="background-image: linear-gradient(rgba(245, 242, 237, 0.7), rgba(245, 242, 237, 0.7)), 
+             url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000');">
+        
+        <div class="text-center z-10 max-w-4xl">
+            <span class="block text-xs uppercase tracking-[0.4em] mb-4 reveal active font-bold text-brown-soft">Bespoke Artistic Craftsmanship</span>
+            <h1 class="text-6xl md:text-8xl font-serif mb-8 reveal active text-brown-deep">Artistry in Every Dimension.</h1>
+            <p class="text-lg md:text-xl font-bold mb-10 max-w-2xl mx-auto reveal active leading-relaxed text-brown-deep italic">Specializing in high-end murals, sculptures, and miniature dioramas.</p>
+            
+            <div class="reveal active">
+                <a href="#portfolio" class="px-12 py-4 btn-primary inline-block text-sm uppercase tracking-widest font-bold rounded-sm">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        STUDIO SECTION
+        ================================================================
+    -->
+    <section id="about" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <!-- REPLACE ABOUT IMAGE BELOW: e.g. src="images/studio-work.jpg" -->
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=1000" 
+                     alt="Artist working" class="rounded-sm shadow-2xl w-full">
+            </div>
+            <div class="reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-brown-soft font-bold mb-4 block">The Studio</span>
+                <h2 class="text-4xl md:text-5xl font-serif mb-6 leading-tight text-brown-deep font-bold italic">Mastering the fine art of detail.</h2>
+                <p class="text-gray-800 mb-8 leading-relaxed font-bold text-lg">
+                    Homisee Studio is a sanctuary for specialized art forms. We bridge the gap between imagination and physical form, delivering hand-painted narratives and miniature worlds for the most discerning clients.
+                </p>
+                <div class="grid grid-cols-2 gap-8 pt-8 border-t border-beige-dark">
+                    <div>
+                        <span class="block text-3xl font-serif text-brown-deep font-bold italic">4.9/5</span>
+                        <span class="text-[10px] uppercase tracking-widest text-brown-soft font-bold">Fiverr Rating</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-serif text-brown-deep font-bold italic">100%</span>
+                        <span class="text-[10px] uppercase tracking-widest text-brown-soft font-bold">Response Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        PORTFOLIO GALLERY SECTION
+        ================================================================
+    -->
+    <section id="portfolio" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-brown-soft font-bold mb-4 block">Gallery</span>
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-brown-deep font-bold italic">Past Commissions</h2>
+                <div class="w-16 h-[1px] bg-brown-soft mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                
+                <!-- PORTFOLIO ITEM 1: MURALS -->
+                <div class="portfolio-card aspect-square bg-gray-100 reveal">
+                    <!-- REPLACE SRC BELOW: e.g. src="images/mural-project.jpg" -->
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Custom Mural</span>
+                        <h3 class="text-2xl font-serif font-bold italic">Echoes of the Mediterranean</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 2: SCULPTURES -->
+                <div class="portfolio-card aspect-square bg-gray-100 reveal" style="transition-delay: 100ms;">
+                    <!-- REPLACE SRC BELOW: e.g. src="images/sculpture-project.jpg" -->
+                    <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Sculpture</span>
+                        <h3 class="text-2xl font-serif font-bold italic">Silence in Stone</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 3: MINIATURES -->
+                <div class="portfolio-card aspect-square bg-gray-100 reveal" style="transition-delay: 200ms;">
+                    <!-- REPLACE SRC BELOW: e.g. src="images/miniature-project.jpg" -->
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Diorama</span>
+                        <h3 class="text-2xl font-serif font-bold italic">The Alchemist's Study</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        FIVERR REVIEWS SECTION
+        ================================================================
+    -->
+    <section id="reviews" class="py-32 px-6 bg-white border-t border-beige-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-20 reveal">
+                <div class="mb-8 md:mb-0 text-center md:text-left">
+                    <h2 class="text-4xl md:text-5xl font-serif text-brown-deep font-bold italic">Client Testimonials</h2>
+                    <p class="text-sm text-gray-800 mt-2 font-bold italic">Verified craftsmanship through Fiverr.</p>
+                </div>
+                <!-- EDIT FIVERR LINK BELOW -->
+                <a href="https://www.fiverr.com/YOUR_USERNAME" target="_blank" class="px-8 py-3 btn-fiverr inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold rounded-sm">
+                    Verify on Fiverr
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- REVIEW CARD 1 -->
+                <div class="fiverr-card p-8 reveal shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-brown-deep flex items-center justify-center text-white font-bold text-xs mr-4 italic">JD</div>
+                        <div>
+                            <p class="text-sm font-bold text-brown-deep">johndoe_art</p>
+                            <p class="text-[10px] text-gray-700 uppercase tracking-widest font-bold italic">United States</p>
+                        </div>
+                    </div>
+                    <div class="flex text-fiverr-green mb-4">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-brown-deep text-sm italic font-bold leading-relaxed">"The level of detail in the miniature model exceeded all my expectations. Homisee is a true artisan."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        CONTACT / EMAIL SECTION
+        ================================================================
+    -->
+    <section id="contact" class="py-32 px-6" style="background-color: var(--beige-dark);">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl md:text-6xl font-serif mb-8 text-brown-deep font-bold italic">Start a Project.</h2>
+            <p class="text-lg font-bold text-gray-800 mb-12 italic leading-relaxed">Submit your inquiry below. We will reach out to discuss your vision.</p>
+            
+            <!-- 
+                 EMAIL FORM (Using Formspree for live emails)
+                 1. Replace "YOUR_EMAIL_HERE" with your email address.
+            -->
+            <form action="https://formspree.io/f/YOUR_EMAIL_HERE" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" id="contactForm">
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Name</label>
+                    <input type="text" name="name" required placeholder="Your Name" class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors placeholder:text-gray-600 font-medium text-brown-deep">
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Email</label>
+                    <input type="email" name="email" required placeholder="your@email.com" class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors placeholder:text-gray-600 font-medium text-brown-deep">
+                </div>
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Message</label>
+                    <textarea rows="4" name="message" required placeholder="Describe your vision (mural, sculpture, or miniature)..." class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors resize-none placeholder:text-gray-600 font-medium text-brown-deep"></textarea>
+                </div>
+                <div class="md:col-span-2 text-center mt-12">
+                    <button type="submit" class="btn-primary px-12 py-5 text-sm uppercase tracking-[0.2em] font-bold rounded-sm w-full md:w-auto">Send Proposal</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        FOOTER
+        ================================================================
+    -->
+    <footer class="py-20 px-6 bg-white border-t border-beige-dark">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="md:col-span-2">
+                <div class="text-2xl font-serif font-semibold tracking-widest text-brown-deep mb-6 italic uppercase">Homisee Studio</div>
+                <p class="text-sm text-gray-800 max-w-sm font-bold italic leading-relaxed">Creating bespoke artistic experiences that marry fine luxury with museum-quality detail.</p>
+            </div>
+            
+            <div>
+                <h4 class="text-xs uppercase tracking-widest font-bold mb-6 text-brown-soft">Connect</h4>
+                <div class="flex flex-col space-y-3 text-sm text-gray-800 font-bold">
+                    <a id="config-whatsapp" href="#" target="_blank" class="hover:text-green-500 transition-colors">WhatsApp</a>
+                    <a id="config-fiverr" href="#" target="_blank" class="hover:text-green-600 transition-colors">Fiverr Profile</a>
+                    <a id="config-instagram" href="#" class="hover:text-brown-deep transition-colors">Instagram</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs uppercase tracking-widest font-bold mb-6 text-brown-soft">Studio</h4>
+                <p class="text-sm text-gray-800 font-bold">Artist District 4<br>Milan, IT 20121</p>
+                <p id="config-email-display" class="text-sm text-gray-800 font-bold mt-2 italic">studio@homisee.com</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-beige-dark text-center text-[10px] uppercase tracking-widest text-gray-600 font-bold">
+            <p>&copy; 2024 Homisee Studio. All Handcrafted Excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ================================================================
+           CONFIGURATION AREA (Easily change links here)
+           ================================================================
+        */
+        const CONFIG = {
+            whatsappNumber: "1234567890",       // Replace with your number (e.g. "919876543210")
+            fiverrUsername: "YOUR_USERNAME",     // Replace with your Fiverr name
+            instagramHandle: "homisee_studio",   // Replace with your Instagram
+            contactEmail: "studio@homisee.com"   // Replace with your public studio email
+        };
+
+        // Automatic link update based on config
+        document.getElementById('config-whatsapp').href = `https://wa.me/${CONFIG.whatsappNumber}`;
+        document.querySelectorAll('a[href*="YOUR_USERNAME"]').forEach(el => el.href = `https://www.fiverr.com/${CONFIG.fiverrUsername}`);
+        document.getElementById('config-instagram').href = `https://instagram.com/${CONFIG.instagramHandle}`;
+        document.getElementById('config-email-display').innerText = CONFIG.contactEmail;
+
+        /* ================================================================
+           INTERACTIVE LOGIC
+           ================================================================
+        */
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, input, textarea').forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; cursor.style.backgroundColor = 'rgba(112, 94, 81, 0.1)'; });
+            el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.backgroundColor = 'transparent'; });
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.onscroll = function() {
+            if (window.pageYOffset > 50) { navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); } 
+            else { navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); }
+            reveal();
+        };
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            }
+        }
+
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+
+        window.onload = reveal;
+    </script>
+</body>
+</html>
