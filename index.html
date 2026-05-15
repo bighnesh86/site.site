@@ -3,357 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homisee Studio | Bespoke Murals, Sculptures & Miniatures</title>
-    
-    <!-- Tailwind CSS & Premium Fonts -->
+    <title>Homisee Studio | Coming Soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* ================================================================
-           1. COLOR PALETTE
-           ================================================================
-        */
         :root {
-            --beige-light: #F5F2ED; 
-            --beige-dark: #E5DED4;  
-            --brown-soft: #705E51;  
-            --brown-deep: #4A3F35;  
-            --text-main: #2D2621;   
-            --fiverr-green: #1dbf73;
-            --whatsapp-green: #25D366;
+            --brand-rust: #C1694F;
+            --brand-paper: #F9F7F5;
+            --brand-dark: #2D2D2D;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-paper);
+            color: var(--brand-dark);
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-rust { color: var(--brand-rust); }
+        .bg-rust { background-color: var(--brand-rust); }
+
+        .reveal {
+            animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        body { background-color: var(--beige-light); color: var(--text-main); font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .nav-link::after { content: ''; display: block; width: 0; height: 1px; background: var(--brown-soft); transition: width .3s; }
-        .nav-link:hover::after { width: 100%; }
-
-        .portfolio-card { overflow: hidden; position: relative; border-radius: 2px; }
-        .portfolio-card img { transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .portfolio-card:hover img { transform: scale(1.08); }
-
-        .btn-primary { background-color: var(--brown-deep); color: white; transition: all 0.3s ease; }
-        .btn-primary:hover { background-color: var(--brown-soft); transform: translateY(-2px); }
-
-        .btn-fiverr { border: 1px solid var(--fiverr-green); color: var(--fiverr-green); transition: all 0.3s ease; }
-        .btn-fiverr:hover { background-color: var(--fiverr-green); color: white; transform: translateY(-2px); }
-
-        .custom-cursor { width: 20px; height: 20px; border: 1px solid var(--brown-soft); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; }
-        .fiverr-card { border: 1px solid rgba(29, 191, 115, 0.2); background: white; }
+        .texture {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        .social-link {
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+        .social-link:hover {
+            opacity: 1;
+            color: var(--brand-rust);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
-<body class="overflow-x-hidden">
-    <div class="custom-cursor hidden md:block" id="cursor"></div>
+<body class="min-h-screen flex flex-col justify-between p-6 md:p-12 lg:p-20">
+    <div class="texture"></div>
 
-    <!-- 
-        ================================================================
-        NAVIGATION
-        ================================================================
-    -->
-    <nav class="fixed w-full z-50 px-6 py-6 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-serif font-semibold tracking-widest text-brown-deep italic">
-                HOMISEE STUDIO
-            </div>
+    <!-- Navigation -->
+    <header class="w-full flex justify-between items-center z-10 reveal" style="animation-delay: 0.1s;">
+        <div class="flex flex-col">
+            <h1 class="text-2xl font-bold tracking-tighter serif">HOMISEE</h1>
+            <span class="text-[9px] tracking-[0.4em] uppercase opacity-50">Studio</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <!-- 👇 EDIT YOUR INSTAGRAM LINK BELOW 👇 -->
+            <a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" class="social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
             
-            <div class="hidden md:flex space-x-12 text-xs uppercase tracking-widest font-bold text-brown-deep">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">Studio</a>
-                <a href="#portfolio" class="nav-link">Gallery</a>
-                <a href="#reviews" class="nav-link">Reviews</a>
-                <a href="#contact" class="nav-link">Commission</a>
-            </div>
-
-            <button class="md:hidden text-brown-deep" id="menuBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-            </button>
+            <!-- 👇 EDIT YOUR LINKEDIN LINK BELOW 👇 -->
+            <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank" class="social-link" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
         </div>
-    </nav>
+    </header>
 
-    <!-- MOBILE MENU OVERLAY -->
-    <div id="mobileMenu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-serif transform translate-x-full transition-transform duration-500">
-        <button id="closeMenu" class="absolute top-8 right-8 text-brown-deep"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l18 18" /></svg></button>
-        <a href="#home" onclick="toggleMenu()">Home</a>
-        <a href="#about" onclick="toggleMenu()">Studio</a>
-        <a href="#portfolio" onclick="toggleMenu()">Gallery</a>
-        <a href="#reviews" onclick="toggleMenu()">Reviews</a>
-        <a href="#contact" onclick="toggleMenu()">Commission</a>
-    </div>
-
-    <!-- 
-        ================================================================
-        HERO SECTION
-        ================================================================
-    -->
-    <!-- 
-       TO REPLACE HERO IMAGE: 
-       Change 'https://images.unsplash.com/...' to your local path e.g. 'images/hero-bg.jpg'
-    -->
-    <section id="home" class="h-screen flex items-center justify-center relative px-6 bg-cover bg-center" 
-             style="background-image: linear-gradient(rgba(245, 242, 237, 0.7), rgba(245, 242, 237, 0.7)), 
-             url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000');">
-        
-        <div class="text-center z-10 max-w-4xl">
-            <span class="block text-xs uppercase tracking-[0.4em] mb-4 reveal active font-bold text-brown-soft">Bespoke Artistic Craftsmanship</span>
-            <h1 class="text-6xl md:text-8xl font-serif mb-8 reveal active text-brown-deep">Artistry in Every Dimension.</h1>
-            <p class="text-lg md:text-xl font-bold mb-10 max-w-2xl mx-auto reveal active leading-relaxed text-brown-deep italic">Specializing in high-end murals, sculptures, and miniature dioramas.</p>
-            
-            <div class="reveal active">
-                <a href="#portfolio" class="px-12 py-4 btn-primary inline-block text-sm uppercase tracking-widest font-bold rounded-sm">View Portfolio</a>
-            </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl z-10">
+        <div class="reveal" style="animation-delay: 0.2s;">
+            <p class="text-rust text-[10px] uppercase tracking-[0.5em] font-bold mb-6">Sculpture & Form</p>
+            <h2 class="serif text-5xl md:text-8xl italic leading-[0.9] mb-12">
+                Where concepts <br>come <span class="text-rust">alive.</span>
+            </h2>
         </div>
-    </section>
 
-    <!-- 
-        ================================================================
-        STUDIO SECTION
-        ================================================================
-    -->
-    <section id="about" class="py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <!-- REPLACE ABOUT IMAGE BELOW: e.g. src="images/studio-work.jpg" -->
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=1000" 
-                     alt="Artist working" class="rounded-sm shadow-2xl w-full">
+        <!-- Services Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 reveal" style="animation-delay: 0.4s;">
+            <div class="border-t border-stone-200 pt-6">
+                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">01. MONUMENTAL</h3>
+                <p class="text-lg serif italic text-stone-600">Large scale sculptures & murals up to 4ft for interiors.</p>
             </div>
-            <div class="reveal">
-                <span class="text-xs uppercase tracking-[0.3em] text-brown-soft font-bold mb-4 block">The Studio</span>
-                <h2 class="text-4xl md:text-5xl font-serif mb-6 leading-tight text-brown-deep font-bold italic">Mastering the fine art of detail.</h2>
-                <p class="text-gray-800 mb-8 leading-relaxed font-bold text-lg">
-                    Homisee Studio is a sanctuary for specialized art forms. We bridge the gap between imagination and physical form, delivering hand-painted narratives and miniature worlds for the most discerning clients.
-                </p>
-                <div class="grid grid-cols-2 gap-8 pt-8 border-t border-beige-dark">
-                    <div>
-                        <span class="block text-3xl font-serif text-brown-deep font-bold italic">4.9/5</span>
-                        <span class="text-[10px] uppercase tracking-widest text-brown-soft font-bold">Fiverr Rating</span>
-                    </div>
-                    <div>
-                        <span class="block text-3xl font-serif text-brown-deep font-bold italic">100%</span>
-                        <span class="text-[10px] uppercase tracking-widest text-brown-soft font-bold">Response Rate</span>
-                    </div>
+            <div class="border-t border-stone-200 pt-6">
+                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">02. MINIATURES</h3>
+                <p class="text-lg serif italic text-stone-600">Hand-finished personal portraits & figurines.</p>
+            </div>
+
+            <!-- ✨ Gemini API Feature: AI Concept Studio -->
+            <div class="col-span-1 md:col-span-2 border border-stone-200/60 bg-white/40 backdrop-blur-sm p-6 my-2 shadow-sm">
+                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-2 text-rust flex items-center">
+                    ✨ AI Concept Studio
+                </h3>
+                <p class="text-sm serif italic text-stone-500 mb-5">Not sure what you need? Describe your space or emotion, and our AI will conceptualize a bespoke piece.</p>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="text" id="ai-input" placeholder="e.g. A minimalist modern living room needing a bold statement..." class="flex-1 bg-transparent border-b border-stone-300 focus:border-rust outline-none py-2 text-sm text-stone-700 placeholder-stone-400 font-light transition-colors">
+                    <button onclick="generateConcept()" id="ai-btn" class="bg-stone-900 text-white px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-rust transition-colors whitespace-nowrap disabled:opacity-50">
+                        Conceptualize ✨
+                    </button>
                 </div>
+                <div id="ai-result" class="hidden mt-6 pt-6 border-t border-stone-200/60">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+            <!-- End Gemini Feature -->
+
+            <div class="border-t border-stone-200 pt-6">
+                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">03. MEMENTOS</h3>
+                <p class="text-lg serif italic text-stone-600">Bespoke brand tags & corporate artifacts.</p>
+            </div>
+            <div class="border-t border-stone-200 pt-6">
+                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">04. REPLICATION</h3>
+                <p class="text-lg serif italic text-stone-600">High-fidelity Silicon mold making services.</p>
             </div>
         </div>
-    </section>
 
-    <!-- 
-        ================================================================
-        PORTFOLIO GALLERY SECTION
-        ================================================================
-    -->
-    <section id="portfolio" class="py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <span class="text-xs uppercase tracking-[0.3em] text-brown-soft font-bold mb-4 block">Gallery</span>
-                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-brown-deep font-bold italic">Past Commissions</h2>
-                <div class="w-16 h-[1px] bg-brown-soft mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
-                
-                <!-- PORTFOLIO ITEM 1: MURALS -->
-                <div class="portfolio-card aspect-square bg-gray-100 reveal">
-                    <!-- REPLACE SRC BELOW: e.g. src="images/mural-project.jpg" -->
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Custom Mural</span>
-                        <h3 class="text-2xl font-serif font-bold italic">Echoes of the Mediterranean</h3>
-                    </div>
-                </div>
-
-                <!-- PORTFOLIO ITEM 2: SCULPTURES -->
-                <div class="portfolio-card aspect-square bg-gray-100 reveal" style="transition-delay: 100ms;">
-                    <!-- REPLACE SRC BELOW: e.g. src="images/sculpture-project.jpg" -->
-                    <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Sculpture</span>
-                        <h3 class="text-2xl font-serif font-bold italic">Silence in Stone</h3>
-                    </div>
-                </div>
-
-                <!-- PORTFOLIO ITEM 3: MINIATURES -->
-                <div class="portfolio-card aspect-square bg-gray-100 reveal" style="transition-delay: 200ms;">
-                    <!-- REPLACE SRC BELOW: e.g. src="images/miniature-project.jpg" -->
-                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                        <span class="text-[10px] uppercase tracking-widest mb-2 font-bold">Diorama</span>
-                        <h3 class="text-2xl font-serif font-bold italic">The Alchemist's Study</h3>
-                    </div>
-                </div>
-
-            </div>
+        <!-- Connect Button -->
+        <div class="mt-16 reveal" style="animation-delay: 0.6s;">
+            <a href="https://wa.me/918144062991" target="_blank" class="inline-flex items-center group">
+                <span class="bg-rust text-white px-8 py-4 text-[11px] uppercase tracking-[0.3em] font-bold group-hover:bg-stone-800 transition-colors">
+                    Start a Project
+                </span>
+                <span class="ml-4 text-xs tracking-widest opacity-40 group-hover:opacity-100 transition-opacity text-stone-500">
+                    via WhatsApp
+                </span>
+            </a>
         </div>
-    </section>
+    </main>
 
-    <!-- 
-        ================================================================
-        FIVERR REVIEWS SECTION
-        ================================================================
-    -->
-    <section id="reviews" class="py-32 px-6 bg-white border-t border-beige-dark">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-20 reveal">
-                <div class="mb-8 md:mb-0 text-center md:text-left">
-                    <h2 class="text-4xl md:text-5xl font-serif text-brown-deep font-bold italic">Client Testimonials</h2>
-                    <p class="text-sm text-gray-800 mt-2 font-bold italic">Verified craftsmanship through Fiverr.</p>
-                </div>
-                <!-- EDIT FIVERR LINK BELOW -->
-                <a href="https://www.fiverr.com/YOUR_USERNAME" target="_blank" class="px-8 py-3 btn-fiverr inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold rounded-sm">
-                    Verify on Fiverr
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- REVIEW CARD 1 -->
-                <div class="fiverr-card p-8 reveal shadow-sm">
-                    <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 rounded-full bg-brown-deep flex items-center justify-center text-white font-bold text-xs mr-4 italic">JD</div>
-                        <div>
-                            <p class="text-sm font-bold text-brown-deep">johndoe_art</p>
-                            <p class="text-[10px] text-gray-700 uppercase tracking-widest font-bold italic">United States</p>
-                        </div>
-                    </div>
-                    <div class="flex text-fiverr-green mb-4">
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="text-brown-deep text-sm italic font-bold leading-relaxed">"The level of detail in the miniature model exceeded all my expectations. Homisee is a true artisan."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 
-        ================================================================
-        CONTACT / EMAIL SECTION
-        ================================================================
-    -->
-    <section id="contact" class="py-32 px-6" style="background-color: var(--beige-dark);">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-5xl md:text-6xl font-serif mb-8 text-brown-deep font-bold italic">Start a Project.</h2>
-            <p class="text-lg font-bold text-gray-800 mb-12 italic leading-relaxed">Submit your inquiry below. We will reach out to discuss your vision.</p>
-            
-            <!-- 
-                 EMAIL FORM (Using Formspree for live emails)
-                 1. Replace "YOUR_EMAIL_HERE" with your email address.
-            -->
-            <form action="https://formspree.io/f/YOUR_EMAIL_HERE" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" id="contactForm">
-                <div class="flex flex-col">
-                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Name</label>
-                    <input type="text" name="name" required placeholder="Your Name" class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors placeholder:text-gray-600 font-medium text-brown-deep">
-                </div>
-                <div class="flex flex-col">
-                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Email</label>
-                    <input type="email" name="email" required placeholder="your@email.com" class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors placeholder:text-gray-600 font-medium text-brown-deep">
-                </div>
-                <div class="flex flex-col md:col-span-2">
-                    <label class="text-[10px] uppercase tracking-widest mb-2 font-bold text-brown-deep">Message</label>
-                    <textarea rows="4" name="message" required placeholder="Describe your vision (mural, sculpture, or miniature)..." class="bg-transparent border-b border-brown-soft/50 py-4 outline-none focus:border-brown-deep transition-colors resize-none placeholder:text-gray-600 font-medium text-brown-deep"></textarea>
-                </div>
-                <div class="md:col-span-2 text-center mt-12">
-                    <button type="submit" class="btn-primary px-12 py-5 text-sm uppercase tracking-[0.2em] font-bold rounded-sm w-full md:w-auto">Send Proposal</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- 
-        ================================================================
-        FOOTER
-        ================================================================
-    -->
-    <footer class="py-20 px-6 bg-white border-t border-beige-dark">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-center md:text-left">
-            <div class="md:col-span-2">
-                <div class="text-2xl font-serif font-semibold tracking-widest text-brown-deep mb-6 italic uppercase">Homisee Studio</div>
-                <p class="text-sm text-gray-800 max-w-sm font-bold italic leading-relaxed">Creating bespoke artistic experiences that marry fine luxury with museum-quality detail.</p>
-            </div>
-            
-            <div>
-                <h4 class="text-xs uppercase tracking-widest font-bold mb-6 text-brown-soft">Connect</h4>
-                <div class="flex flex-col space-y-3 text-sm text-gray-800 font-bold">
-                    <a id="config-whatsapp" href="#" target="_blank" class="hover:text-green-500 transition-colors">WhatsApp</a>
-                    <a id="config-fiverr" href="#" target="_blank" class="hover:text-green-600 transition-colors">Fiverr Profile</a>
-                    <a id="config-instagram" href="#" class="hover:text-brown-deep transition-colors">Instagram</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="text-xs uppercase tracking-widest font-bold mb-6 text-brown-soft">Studio</h4>
-                <p class="text-sm text-gray-800 font-bold">Artist District 4<br>Milan, IT 20121</p>
-                <p id="config-email-display" class="text-sm text-gray-800 font-bold mt-2 italic">studio@homisee.com</p>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-beige-dark text-center text-[10px] uppercase tracking-widest text-gray-600 font-bold">
-            <p>&copy; 2024 Homisee Studio. All Handcrafted Excellence.</p>
+    <!-- Footer -->
+    <footer class="w-full flex flex-col md:flex-row justify-between items-end md:items-center z-10 text-[9px] uppercase tracking-[0.4em] text-stone-400 mt-20 reveal" style="animation-delay: 0.8s;">
+        <div class="flex flex-col space-y-1">
+            <span>© 2026 HOMISEE STUDIO</span>
+            <span class="serif lowercase tracking-normal italic opacity-60">hand-finished artifacts</span>
         </div>
     </footer>
 
+    <!-- Abstract Shape -->
+    <div class="fixed bottom-0 right-0 w-1/3 h-1/2 opacity-[0.03] pointer-events-none z-0">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <path fill="#C1694F" d="M40.7,-70.2C53.3,-64.5,64.5,-53.3,71.2,-40.1C77.9,-26.9,80.1,-11.7,78.2,2.8C76.3,17.4,70.3,31.3,61.1,43.3C51.9,55.3,39.5,65.4,25.5,71.5C11.5,77.6,-4.1,79.7,-19,76.5C-33.9,73.4,-48.1,64.9,-59,53.2C-69.9,41.5,-77.5,26.6,-79.8,11.1C-82.1,-4.4,-79.1,-20.5,-71.4,-34.3C-63.7,-48.1,-51.3,-59.6,-37.6,-64.8C-23.9,-70.1,-8.8,-69.1,5.3,-78.3C19.4,-87.5,28.1,-75.8,40.7,-70.2Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <!-- Gemini API Integration Script -->
     <script>
-        /* ================================================================
-           CONFIGURATION AREA (Easily change links here)
-           ================================================================
-        */
-        const CONFIG = {
-            whatsappNumber: "1234567890",       // Replace with your number (e.g. "919876543210")
-            fiverrUsername: "YOUR_USERNAME",     // Replace with your Fiverr name
-            instagramHandle: "homisee_studio",   // Replace with your Instagram
-            contactEmail: "studio@homisee.com"   // Replace with your public studio email
-        };
+        const apiKey = ""; // API key is injected by the environment
 
-        // Automatic link update based on config
-        document.getElementById('config-whatsapp').href = `https://wa.me/${CONFIG.whatsappNumber}`;
-        document.querySelectorAll('a[href*="YOUR_USERNAME"]').forEach(el => el.href = `https://www.fiverr.com/${CONFIG.fiverrUsername}`);
-        document.getElementById('config-instagram').href = `https://instagram.com/${CONFIG.instagramHandle}`;
-        document.getElementById('config-email-display').innerText = CONFIG.contactEmail;
+        async function fetchGemini(prompt, systemInstruction) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            title: { type: "STRING" },
+                            scale: { type: "STRING" },
+                            material: { type: "STRING" },
+                            narrative: { type: "STRING" }
+                        },
+                        required: ["title", "scale", "material", "narrative"]
+                    }
+                }
+            };
 
-        /* ================================================================
-           INTERACTIVE LOGIC
-           ================================================================
-        */
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button, input, textarea').forEach(el => {
-            el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; cursor.style.backgroundColor = 'rgba(112, 94, 81, 0.1)'; });
-            el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.backgroundColor = 'transparent'; });
-        });
-
-        const navbar = document.getElementById('navbar');
-        window.onscroll = function() {
-            if (window.pageYOffset > 50) { navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); } 
-            else { navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); }
-            reveal();
-        };
-
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            // Implement exponential backoff for reliability
+            let retries = 5;
+            let delay = 1000;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const data = await response.json();
+                    return JSON.parse(data.candidates[0].content.parts[0].text);
+                } catch (e) {
+                    if (i === retries - 1) throw e;
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
             }
         }
 
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
-        menuBtn.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
+        async function generateConcept() {
+            const inputField = document.getElementById('ai-input');
+            const input = inputField.value.trim();
+            if (!input) return;
 
-        window.onload = reveal;
+            const btn = document.getElementById('ai-btn');
+            const resultDiv = document.getElementById('ai-result');
+
+            // Set loading state
+            btn.disabled = true;
+            btn.innerHTML = 'Conceiving... ✨';
+            resultDiv.classList.add('hidden');
+            resultDiv.innerHTML = '';
+
+            const systemPrompt = `You are the creative director of Homisee Studio, a high-end bespoke 3D printing and sculpture studio. A client will describe their space, emotion, or idea. 
+            
+            You must propose a single sculpture concept following these STRICT RULES:
+            1. ALLOWED MATERIALS: You can ONLY suggest 'PLA', 'PETG', or 'Resin'. You may suggest surface finishes (e.g., 'Hand-finished faux bronze', 'Matte stone-textured PETG'), but the base material MUST be PLA, PETG, or Resin. NEVER suggest carved stone, marble, carved wood, or metal casting.
+            2. SCALE LIMITS: The absolute maximum scale is 4ft. For monumental pieces, suggest up to 4ft. For personal miniatures, suggest 6-12 inches. For mementos, suggest 5-8 inches.
+            3. STYLE: Focus on highly-detailed, handcrafted aesthetics achievable through high-fidelity printing and silicon molding.
+            
+            Return a JSON object containing a poetic 'title', suggested 'scale', suggested 'material', and a 'narrative' (2-3 sentences describing the visual impact and how it fits their description).`;
+
+            try {
+                const concept = await fetchGemini(`Client request: ${input}`, systemPrompt);
+
+                // Build the result UI
+                resultDiv.innerHTML = `
+                    <div class="flex flex-col space-y-4 reveal" style="animation-duration: 0.5s;">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                            <h4 class="serif text-2xl italic text-stone-800">${concept.title}</h4>
+                            <div class="md:text-right border-l md:border-l-0 md:border-r border-rust pl-3 md:pl-0 md:pr-3 py-1">
+                                <span class="block text-[8px] uppercase tracking-[0.2em] text-stone-400 mb-1">Suggested Specs</span>
+                                <span class="block text-xs font-semibold text-rust tracking-wider">${concept.scale} • ${concept.material}</span>
+                            </div>
+                        </div>
+                        <p class="text-sm font-light text-stone-600 leading-relaxed max-w-2xl">${concept.narrative}</p>
+                        <a href="https://wa.me/918144062991?text=${encodeURIComponent(`Hi Homisee Studio, I just used the Concept Studio and I'm interested in bringing this to life: \n\nTitle: ${concept.title}\nSpecs: ${concept.scale}, ${concept.material}\n\nLet's discuss!`)}" target="_blank" class="text-[10px] uppercase tracking-[0.2em] font-bold text-rust hover:text-stone-800 transition-colors mt-4 inline-flex items-center w-max border-b border-rust hover:border-stone-800 pb-1">
+                            Discuss this concept via WhatsApp
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                `;
+                resultDiv.classList.remove('hidden');
+                
+                // Optional: clear input after successful generation
+                // inputField.value = ''; 
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="text-xs text-red-500 italic">The studio's creative mind is currently resting. Please try again later.</p>`;
+                resultDiv.classList.remove('hidden');
+            } finally {
+                // Reset button state
+                btn.disabled = false;
+                btn.innerHTML = 'Conceptualize ✨';
+            }
+        }
     </script>
 </body>
 </html>
