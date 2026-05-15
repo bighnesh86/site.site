@@ -77,53 +77,35 @@
     <main class="max-w-4xl z-10">
         <div class="reveal" style="animation-delay: 0.2s;">
             <p class="text-rust text-[10px] uppercase tracking-[0.5em] font-bold mb-6">Sculpture & Form</p>
-            <h2 class="serif text-5xl md:text-8xl italic leading-[0.9] mb-12">
+            <h2 class="serif text-5xl md:text-8xl italic leading-[0.9] mb-16 md:mb-24">
                 Where concepts <br>come <span class="text-rust">alive.</span>
             </h2>
         </div>
 
         <!-- Services Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 reveal" style="animation-delay: 0.4s;">
-            <div class="border-t border-stone-200 pt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 md:gap-y-20 reveal" style="animation-delay: 0.4s;">
+            <div class="border-t border-stone-200 pt-6 md:pt-8">
                 <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">01. MONUMENTAL</h3>
                 <p class="text-lg serif italic text-stone-600">Large scale sculptures & murals up to 4ft for interiors.</p>
             </div>
-            <div class="border-t border-stone-200 pt-6">
+            <div class="border-t border-stone-200 pt-6 md:pt-8">
                 <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">02. MINIATURES</h3>
                 <p class="text-lg serif italic text-stone-600">Hand-finished personal portraits & figurines.</p>
             </div>
 
-            <!-- ✨ Gemini API Feature: AI Concept Studio -->
-            <div class="col-span-1 md:col-span-2 border border-stone-200/60 bg-white/40 backdrop-blur-sm p-6 my-2 shadow-sm">
-                <h3 class="text-[11px] uppercase tracking-widest font-bold mb-2 text-rust flex items-center">
-                    ✨ AI Concept Studio
-                </h3>
-                <p class="text-sm serif italic text-stone-500 mb-5">Not sure what you need? Describe your space or emotion, and our AI will conceptualize a bespoke piece.</p>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <input type="text" id="ai-input" placeholder="e.g. A minimalist modern living room needing a bold statement..." class="flex-1 bg-transparent border-b border-stone-300 focus:border-rust outline-none py-2 text-sm text-stone-700 placeholder-stone-400 font-light transition-colors">
-                    <button onclick="generateConcept()" id="ai-btn" class="bg-stone-900 text-white px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-rust transition-colors whitespace-nowrap disabled:opacity-50">
-                        Conceptualize ✨
-                    </button>
-                </div>
-                <div id="ai-result" class="hidden mt-6 pt-6 border-t border-stone-200/60">
-                    <!-- Results will be injected here -->
-                </div>
-            </div>
-            <!-- End Gemini Feature -->
-
-            <div class="border-t border-stone-200 pt-6">
+            <div class="border-t border-stone-200 pt-6 md:pt-8">
                 <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">03. MEMENTOS</h3>
                 <p class="text-lg serif italic text-stone-600">Bespoke brand tags & corporate artifacts.</p>
             </div>
-            <div class="border-t border-stone-200 pt-6">
+            <div class="border-t border-stone-200 pt-6 md:pt-8">
                 <h3 class="text-[11px] uppercase tracking-widest font-bold mb-3 text-stone-400">04. REPLICATION</h3>
                 <p class="text-lg serif italic text-stone-600">High-fidelity Silicon mold making services.</p>
             </div>
         </div>
 
         <!-- Connect Button -->
-        <div class="mt-16 reveal" style="animation-delay: 0.6s;">
-            <a href="https://wa.me/918144062991" target="_blank" class="inline-flex items-center group">
+        <div class="mt-16 md:mt-20 reveal" style="animation-delay: 0.6s;">
+            <a href="https://wa.me/918144062991?text=Hi%20Homisee%20Studio,%20I'm%20interested%20in%20starting%20a%20new%20project." target="_blank" class="inline-flex items-center group">
                 <span class="bg-rust text-white px-8 py-4 text-[11px] uppercase tracking-[0.3em] font-bold group-hover:bg-stone-800 transition-colors">
                     Start a Project
                 </span>
@@ -148,108 +130,5 @@
             <path fill="#C1694F" d="M40.7,-70.2C53.3,-64.5,64.5,-53.3,71.2,-40.1C77.9,-26.9,80.1,-11.7,78.2,2.8C76.3,17.4,70.3,31.3,61.1,43.3C51.9,55.3,39.5,65.4,25.5,71.5C11.5,77.6,-4.1,79.7,-19,76.5C-33.9,73.4,-48.1,64.9,-59,53.2C-69.9,41.5,-77.5,26.6,-79.8,11.1C-82.1,-4.4,-79.1,-20.5,-71.4,-34.3C-63.7,-48.1,-51.3,-59.6,-37.6,-64.8C-23.9,-70.1,-8.8,-69.1,5.3,-78.3C19.4,-87.5,28.1,-75.8,40.7,-70.2Z" transform="translate(100 100)" />
         </svg>
     </div>
-
-    <!-- Gemini API Integration Script -->
-    <script>
-        const apiKey = ""; // API key is injected by the environment
-
-        async function fetchGemini(prompt, systemInstruction) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            title: { type: "STRING" },
-                            scale: { type: "STRING" },
-                            material: { type: "STRING" },
-                            narrative: { type: "STRING" }
-                        },
-                        required: ["title", "scale", "material", "narrative"]
-                    }
-                }
-            };
-
-            // Implement exponential backoff for reliability
-            let retries = 5;
-            let delay = 1000;
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const data = await response.json();
-                    return JSON.parse(data.candidates[0].content.parts[0].text);
-                } catch (e) {
-                    if (i === retries - 1) throw e;
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
-                }
-            }
-        }
-
-        async function generateConcept() {
-            const inputField = document.getElementById('ai-input');
-            const input = inputField.value.trim();
-            if (!input) return;
-
-            const btn = document.getElementById('ai-btn');
-            const resultDiv = document.getElementById('ai-result');
-
-            // Set loading state
-            btn.disabled = true;
-            btn.innerHTML = 'Conceiving... ✨';
-            resultDiv.classList.add('hidden');
-            resultDiv.innerHTML = '';
-
-            const systemPrompt = `You are the creative director of Homisee Studio, a high-end bespoke 3D printing and sculpture studio. A client will describe their space, emotion, or idea. 
-            
-            You must propose a single sculpture concept following these STRICT RULES:
-            1. ALLOWED MATERIALS: You can ONLY suggest 'PLA', 'PETG', or 'Resin'. You may suggest surface finishes (e.g., 'Hand-finished faux bronze', 'Matte stone-textured PETG'), but the base material MUST be PLA, PETG, or Resin. NEVER suggest carved stone, marble, carved wood, or metal casting.
-            2. SCALE LIMITS: The absolute maximum scale is 4ft. For monumental pieces, suggest up to 4ft. For personal miniatures, suggest 6-12 inches. For mementos, suggest 5-8 inches.
-            3. STYLE: Focus on highly-detailed, handcrafted aesthetics achievable through high-fidelity printing and silicon molding.
-            
-            Return a JSON object containing a poetic 'title', suggested 'scale', suggested 'material', and a 'narrative' (2-3 sentences describing the visual impact and how it fits their description).`;
-
-            try {
-                const concept = await fetchGemini(`Client request: ${input}`, systemPrompt);
-
-                // Build the result UI
-                resultDiv.innerHTML = `
-                    <div class="flex flex-col space-y-4 reveal" style="animation-duration: 0.5s;">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                            <h4 class="serif text-2xl italic text-stone-800">${concept.title}</h4>
-                            <div class="md:text-right border-l md:border-l-0 md:border-r border-rust pl-3 md:pl-0 md:pr-3 py-1">
-                                <span class="block text-[8px] uppercase tracking-[0.2em] text-stone-400 mb-1">Suggested Specs</span>
-                                <span class="block text-xs font-semibold text-rust tracking-wider">${concept.scale} • ${concept.material}</span>
-                            </div>
-                        </div>
-                        <p class="text-sm font-light text-stone-600 leading-relaxed max-w-2xl">${concept.narrative}</p>
-                        <a href="https://wa.me/918144062991?text=${encodeURIComponent(`Hi Homisee Studio, I just used the Concept Studio and I'm interested in bringing this to life: \n\nTitle: ${concept.title}\nSpecs: ${concept.scale}, ${concept.material}\n\nLet's discuss!`)}" target="_blank" class="text-[10px] uppercase tracking-[0.2em] font-bold text-rust hover:text-stone-800 transition-colors mt-4 inline-flex items-center w-max border-b border-rust hover:border-stone-800 pb-1">
-                            Discuss this concept via WhatsApp
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </a>
-                    </div>
-                `;
-                resultDiv.classList.remove('hidden');
-                
-                // Optional: clear input after successful generation
-                // inputField.value = ''; 
-            } catch (error) {
-                resultDiv.innerHTML = `<p class="text-xs text-red-500 italic">The studio's creative mind is currently resting. Please try again later.</p>`;
-                resultDiv.classList.remove('hidden');
-            } finally {
-                // Reset button state
-                btn.disabled = false;
-                btn.innerHTML = 'Conceptualize ✨';
-            }
-        }
-    </script>
 </body>
 </html>
